@@ -6,7 +6,6 @@
  * Version:           2.1
  * Requires at least: 6.6
  * Tested up to:	  6.8.2
- * Stable Tag:		  2.1
  * Requires PHP:      8.0
  * Author:            DigitalGdn
  * Author URI:        https://digitalgarden.co
