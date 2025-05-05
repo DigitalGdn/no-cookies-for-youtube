@@ -1,10 +1,10 @@
 # No Cookies for YouTube
-Contributors: bkno
+Contributors: bkno, wpexplorer
 Tags: YouTube, GDPR, cookies, privacy
 Requires at least: 6.3
 Requires PHP: 8.0
-Tested up to: 6.7.2
-Stable Tag: 2.0
+Tested up to: 6.8.2
+Stable Tag: 2.1
 License: GPL v3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -15,6 +15,10 @@ Modifies YouTube embeds to use the youtube-nocookie.com domain.
 This plugin automatically modifies YouTube embeds to use the youtube-nocookie.com domain.
 
 ## Changelog
+
+### 2.1
+
+* Add support for ACF oEmbed.
 
 ### 2.0
 

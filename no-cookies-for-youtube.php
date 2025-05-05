@@ -3,12 +3,12 @@
  * Plugin Name:       No Cookies for YouTube
  * Plugin URI:
  * Description:       Modifies YouTube embeds to use the youtube-nocookie.com domain.
- * Version:           2.0
+ * Version:           2.1
  * Requires at least: 6.6
  * Tested up to:	  6.7.2
- * Stable Tag:		  2.0
+ * Stable Tag:		  2.1
  * Requires PHP:      8.0
- * Author:            bkno
+ * Author:            DigitalGdn
  * Author URI:        https://digitalgarden.co
  * License:           GPL v3 or later
  * License URI:       https://www.gnu.org/licenses/gpl-3.0.html
@@ -48,16 +48,32 @@ if ( ! class_exists( 'No_Cookies_for_YouTube' ) ) {
 		public function __construct() {
 			add_filter( 'embed_oembed_html', [ $this, 'filter_embed_oembed_html' ] );
 			add_filter( 'the_content', [ $this, 'filter_the_content' ], 100 );
+
+			if ( class_exists( 'ACF', false ) ) {
+			    add_filter( 'acf/format_value/type=oembed', [ $this, 'filter_acf_oembed' ], 100, 3 );
+			}
 		}
 
 		/**
-		 * Modify the oEmbed HTMl.
+		 * Modify the oEmbed HTML.
 		 */
 		public function filter_embed_oembed_html( $html ) {
 			if ( str_contains( $html, 'youtube.com' ) ) {
 				$html = str_replace( 'youtube.com', 'youtube-nocookie.com', $html );
 			}
 			return $html;
+		}
+
+		/**
+		 * Modify ACF oEmbed field.
+		 */
+		public function filter_acf_oembed( $value, $post_id, $field ) {
+			if ( str_contains( $value, 'youtube.com' ) ) {
+				$value = str_replace( 'youtube.com', 'youtube-nocookie.com', $value );
+			} else if ( str_contains( $value, 'youtu.be' ) ) {
+				$value = str_replace( 'youtu.be/', 'youtube-nocookie.com/embed/', $value );
+			}
+			return $value;
 		}
 
 		/**
