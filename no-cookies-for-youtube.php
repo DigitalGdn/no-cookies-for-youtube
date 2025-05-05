@@ -5,7 +5,7 @@
  * Description:       Modifies YouTube embeds to use the youtube-nocookie.com domain.
  * Version:           2.1
  * Requires at least: 6.6
- * Tested up to:	  6.7.2
+ * Tested up to:	  6.8.2
  * Stable Tag:		  2.1
  * Requires PHP:      8.0
  * Author:            DigitalGdn
